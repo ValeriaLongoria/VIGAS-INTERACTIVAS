@@ -103,7 +103,7 @@ def cortar_y_momentear(L, b=None, w=0, P=0, a=0,
 
     return x, V, M
 
-def curva_elastica(L, b=None, EI=1e7, w=0, P=0, a=0,
+def curva_elastica(L, b=None, EI=1, w=0, P=0, a=0,
                    tri1_start=0, tri1_end=0, w1_1=0, w1_2=0,
                    tri2_start=0, tri2_end=0, w2_1=0, w2_2=0,
                    Ma=0, aM=0, n=2000):
@@ -238,7 +238,7 @@ def dibujar_reacciones(ax, RA, RB, b, L, altura_base):
 
 st.set_page_config(layout="wide", page_title="Vigas - Interactivo (fiel al original)")
 
-st.sidebar.title("Controles (idénticos)")
+st.sidebar.title("Controles")
 sel = st.sidebar.radio("Selecciona una viga", list(vigas.keys()))
 params = vigas[sel]
 
@@ -248,7 +248,7 @@ b = st.sidebar.slider("Pos. apoyo B (b)", 0.0, float(L), float(params.get("b", L
 w = st.sidebar.slider("Carga uniforme", 0.0, 5000.0, float(params["w"]))
 P = st.sidebar.slider("Carga puntual", 0.0, 20000.0, float(params["P"]))
 a = st.sidebar.slider("Pos. puntual (a)", 0.0, float(L), float(params["a"]))
-EI = st.sidebar.slider("EI", 1.0, 1e8, 1e7)
+EI = st.sidebar.slider("EI", 1.0, 1, 1000)
 
 st.sidebar.markdown("### Triangular 1")
 tri1_start = st.sidebar.slider("Tri1 x start", 0.0, float(L), float(params["tri1_start"]))
@@ -330,3 +330,4 @@ st.pyplot(fig)
 
 st.markdown("---")
 st.caption("La implementación mantiene las funciones y cálculos del script original; los controles son equivalentes y actualizan las gráficas en tiempo real (interfaz web).")
+
