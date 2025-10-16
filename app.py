@@ -248,7 +248,8 @@ b = st.sidebar.slider("Pos. apoyo B (b)", 0.0, float(L), float(params.get("b", L
 w = st.sidebar.slider("Carga uniforme", 0.0, 5000.0, float(params["w"]))
 P = st.sidebar.slider("Carga puntual", 0.0, 20000.0, float(params["P"]))
 a = st.sidebar.slider("Pos. puntual (a)", 0.0, float(L), float(params["a"]))
-EI = st.sidebar.slider("EI", 1000.0, 1.0))
+EI = st.sidebar.slider("EI", min_value=1.0, max_value=1000.0, value=100.0)
+
 
 st.sidebar.markdown("### Triangular 1")
 tri1_start = st.sidebar.slider("Tri1 x start", 0.0, float(L), float(params["tri1_start"]))
@@ -330,6 +331,7 @@ st.pyplot(fig)
 
 st.markdown("---")
 st.caption("La implementación mantiene las funciones y cálculos del script original; los controles son equivalentes y actualizan las gráficas en tiempo real (interfaz web).")
+
 
 
 
